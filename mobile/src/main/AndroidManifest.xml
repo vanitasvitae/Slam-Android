@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="de.vanitasvitae.slam">
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Slam">
+        <activity
+            android:name=".activity.LoginActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.MainActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.car.application"
+            android:resource="@xml/automotive_app_desc" />
+
+        <service android:name=".service.MyMessagingService"></service>
+
+        <receiver android:name=".receiver.MessageReadReceiver">
+            <intent-filter>
+                <action android:name="de.vanitasvitae.slam.ACTION_MESSAGE_READ" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receiver.MessageReplyReceiver">
+            <intent-filter>
+                <action android:name="de.vanitasvitae.slam.ACTION_MESSAGE_REPLY" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

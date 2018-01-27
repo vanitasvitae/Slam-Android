@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AvatarImageBehavior">
+        <attr name="finalYPosition" format="dimension"/>
+        <attr name="startXPosition" format="dimension"/>
+        <attr name="startToolbarPosition" format="dimension"/>
+        <attr name="startHeight" format="dimension"/>
+        <attr name="finalHeight" format="dimension"/>
+    </declare-styleable>
+
+    <!-- Styleable Drawables -->
+    <attr name="themedContactDrawable" format="reference" />
+    <attr name="themedAddContactDrawable" format="reference" />
+    <attr name="themedBookmarkDrawable" format="reference" />
+    <attr name="themedAddBookmarkDrawable" format="reference" />
+    <attr name="themedSettingsDrawable" format="reference" />
+</resources>

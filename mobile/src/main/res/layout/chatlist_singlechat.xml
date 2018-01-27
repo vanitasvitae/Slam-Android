@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/contact_image"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_launcher_background"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/contact_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Max Mustermann"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+        <TextView
+            android:id="@+id/contact_last_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ich war letzte Woche noch da und..."/>
+    </LinearLayout>
+</LinearLayout>

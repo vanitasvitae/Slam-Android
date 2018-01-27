@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+    <!ENTITY appname "Slam!">
+    <!ENTITY author "Paul Schaub">
+    ]>
+
+<resources>
+    <string name="app_name" translatable="false">&appname;</string>
+
+    <!-- Strings related to login -->
+    <string name="item_menu_login__advanced_options">Advanced Options</string>
+
+    <string name="hint_jid">Jabber ID</string>
+    <string name="hint_password">Password</string>
+    <string name="button_login_account">Login</string>
+    <string name="button_register_account">Register</string>
+    <string name="error_invalid_jid">Invalid Jabber ID</string>
+    <string name="error_invalid_password">Password is too short</string>
+    <string name="error_incorrect_password">Password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+
+    <!-- Toolbar -->
+    <string name="search">Search</string>
+    <string name="settings">Settings</string>
+
+    <!-- Navigation Drawer -->
+    <string name="item_navdrawer__contacts">Contacts</string>
+    <string name="item_navdrawer__bookmarks">Bookmarks</string>
+    <string name="item_navdrawer__settings">Settings</string>
+
+</resources>

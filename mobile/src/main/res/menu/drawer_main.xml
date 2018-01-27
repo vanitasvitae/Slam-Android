@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/item_navdrawer__contacts"
+        android:title="@string/item_navdrawer__contacts"
+        android:icon="?attr/themedContactDrawable"/>
+
+    <item android:id="@+id/item_navdrawer__bookmarks"
+        android:title="@string/item_navdrawer__bookmarks"
+        android:icon="?attr/themedBookmarkDrawable"/>
+
+    <item android:id="@+id/item_navdrawer__settings"
+        android:title="@string/item_navdrawer__settings"
+        android:icon="?attr/themedSettingsDrawable"/>
+</menu>
