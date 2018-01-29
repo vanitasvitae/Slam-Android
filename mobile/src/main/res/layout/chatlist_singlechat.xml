@@ -1,29 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/chatlist_vert_size">
     <ImageView
         android:id="@+id/contact_image"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_margin="5dp"
+        android:layout_alignParentStart="true"
         android:src="@drawable/ic_launcher_background"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/contact_name"
+        android:layout_toEndOf="@id/contact_image">
+
+        <RelativeLayout
+            android:id="@+id/upper"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/contact_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/upper_meta"
+                android:textStyle="bold"
+                android:text="Max Mustermann"
+                android:ellipsize="end"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+
+            <LinearLayout
+                android:id="@+id/upper_meta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_check_black_48dp"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/lower"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Max Mustermann"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
-        <TextView
-            android:id="@+id/contact_last_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ich war letzte Woche noch da und..."/>
-    </LinearLayout>
-</LinearLayout>
+            android:layout_below="@id/upper"
+            android:layout_alignParentBottom="true">
+
+            <FrameLayout
+                android:id="@+id/contact_content"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/lower_meta">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Ich war letzte Woche noch da und habe mir einen eigenen Eindruck von der Lage verschafft."/>
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/lower_meta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal"
+                android:layout_alignParentEnd="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="13:37"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

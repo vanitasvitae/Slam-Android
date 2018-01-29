@@ -6,4 +6,6 @@
 
     <!-- dimensions -->
     <dimen name="spacing_normal">16dp</dimen>
+
+    <dimen name="chatlist_vert_size">64dp</dimen>
 </resources>

@@ -8,10 +8,18 @@
         <attr name="finalHeight" format="dimension"/>
     </declare-styleable>
 
+    <!-- Colors -->
+    <attr name="colorBackground" format="color" />
+
+    <!-- Text Sizes -->
+    <attr name="textSizeMessageMetadata" format="dimension" />
+    <attr name="textSizeMessageContent" format="dimension" />
+
     <!-- Styleable Drawables -->
     <attr name="themedContactDrawable" format="reference" />
     <attr name="themedAddContactDrawable" format="reference" />
     <attr name="themedBookmarkDrawable" format="reference" />
     <attr name="themedAddBookmarkDrawable" format="reference" />
     <attr name="themedSettingsDrawable" format="reference" />
+    <attr name="themedSearchDrawable" format="reference" />
 </resources>

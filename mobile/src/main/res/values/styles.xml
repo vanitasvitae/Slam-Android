@@ -1,25 +1,39 @@
 <resources>
-
-    <!-- Base application theme. -->
     <style name="Slam" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorAccent">@color/secondaryColor</item>
+
+        <item name="colorBackground">@android:color/background_light</item>
+
+        <item name="textSizeMessageMetadata">10sp</item>
+        <item name="textSizeMessageContent">18sp</item>
 
         <item name="themedContactDrawable">@drawable/ic_person_black_48dp</item>
         <item name="themedAddContactDrawable">@drawable/ic_person_add_black_48dp</item>
         <item name="themedBookmarkDrawable">@drawable/ic_group_black_48dp</item>
         <item name="themedAddBookmarkDrawable">@drawable/ic_group_add_black_48dp</item>
         <item name="themedSettingsDrawable">@drawable/ic_settings_black_48dp</item>
+        <item name="themedSearchDrawable">@drawable/ic_search_black_48dp</item>
     </style>
 
     <style name="Slam.Dark" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorBackground">@color/backgroundDark</item>
+
+        <item name="textSizeMessageMetadata">10sp</item>
+        <item name="textSizeMessageContent">18sp</item>
+
         <item name="themedContactDrawable">@drawable/ic_person_white_48dp</item>
         <item name="themedAddContactDrawable">@drawable/ic_person_add_white_48dp</item>
         <item name="themedBookmarkDrawable">@drawable/ic_group_white_48dp</item>
         <item name="themedAddBookmarkDrawable">@drawable/ic_group_add_white_48dp</item>
         <item name="themedSettingsDrawable">@drawable/ic_settings_white_48dp</item>
+        <item name="themedSearchDrawable">@drawable/ic_search_white_48dp</item>
     </style>
 
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
 </resources>
