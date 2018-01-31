@@ -40,6 +40,7 @@
                 android:layout_alignParentEnd="true">
 
                 <ImageView
+                    android:id="@+id/send_indicator"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_check_black_48dp"/>
@@ -63,6 +64,7 @@
                 android:layout_toStartOf="@+id/lower_meta">
 
                 <TextView
+                    android:id="@+id/contact_textcontent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Ich war letzte Woche noch da und habe mir einen eigenen Eindruck von der Lage verschafft."/>
@@ -73,11 +75,12 @@
                 android:id="@+id/lower_meta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
                 android:orientation="horizontal"
-                android:layout_alignParentEnd="true">
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true">
 
                 <TextView
+                    android:id="@+id/contact_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="13:37"/>
