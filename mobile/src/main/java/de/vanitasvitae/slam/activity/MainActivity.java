@@ -7,16 +7,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.vanitasvitae.slam.R;
+import de.vanitasvitae.slam.activity.abstr.ThemedAppCompatActivity;
 
 /**
  * Created by vanitas on 22.01.18.

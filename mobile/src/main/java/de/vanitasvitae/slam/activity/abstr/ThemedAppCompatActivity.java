@@ -1,4 +1,4 @@
-package de.vanitasvitae.slam.activity;
+package de.vanitasvitae.slam.activity.abstr;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import java.util.Arrays;
 import de.vanitasvitae.slam.R;
 
 /**
- * Created by Paul Schaub on 27.01.18.
+ * AppCompatActivity that can easily be themed.
  */
 public abstract class ThemedAppCompatActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 

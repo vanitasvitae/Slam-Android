@@ -3,27 +3,51 @@ package de.vanitasvitae.slam.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
+import android.text.Editable;
 import android.view.Menu;
-import android.view.inputmethod.EditorInfo;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.vanitasvitae.slam.AfterTextChangedListener;
+import de.vanitasvitae.slam.EditorActionDoneListener;
 import de.vanitasvitae.slam.R;
+import de.vanitasvitae.slam.activity.abstr.ThemedAppCompatActivity;
+import de.vanitasvitae.slam.mvp_contracts.LoginContract;
 
-public class LoginActivity extends ThemedAppCompatActivity {
+public class LoginActivity extends ThemedAppCompatActivity implements LoginContract.View {
+
+    // Presenter of this view
+    private LoginContract.Presenter presenter;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    @BindView(R.id.progressbar)
+    ProgressBar progressBar;
+
+    @BindView(R.id.login_username_layout)
+    TextInputLayout inputUsernameLayout;
+
     @BindView(R.id.login_username)
     TextInputEditText inputUsername;
 
+    @BindView(R.id.login_password_layout)
+    TextInputLayout inputPasswordLayout;
+
     @BindView(R.id.login_password)
     TextInputEditText inputPassword;
+
+    @BindView(R.id.button_login)
+    Button buttonLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,28 +57,89 @@ public class LoginActivity extends ThemedAppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-        inputPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        this.presenter = new DummyLoginPresenter(this);
+
+        // attempt login on editor action done
+        inputPassword.setOnEditorActionListener(new EditorActionDoneListener() {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    login();
-                    return true;
-                }
-                return false;
+            public void onEditorActionDone(TextView v) {
+                login();
+            }
+        });
+
+        inputUsername.addTextChangedListener(new AfterTextChangedListener() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                presenter.jidChanged(s.toString());
+            }
+        });
+
+        inputPassword.addTextChangedListener(new AfterTextChangedListener() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                presenter.passwordChanged(s.toString());
             }
         });
     }
 
     @OnClick(R.id.button_login)
     void login() {
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
+        presenter.loginClicked();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_login, menu);
         return true;
+    }
+
+    @Override
+    public void showInvalidJidError() {
+        inputUsernameLayout.setError(getResources().getText(R.string.error_invalid_jid));
+    }
+
+    @Override
+    public void showInvalidPasswordError() {
+        inputPasswordLayout.setError(getResources().getText(R.string.error_invalid_password));
+    }
+
+    @Override
+    public void showIncorrectPasswordError() {
+        inputPasswordLayout.setError(getResources().getText(R.string.error_incorrect_password));
+    }
+
+    @Override
+    public void hideInvalidJidError() {
+        inputUsernameLayout.setError(null);
+    }
+
+    @Override
+    public void hidePasswordError() {
+        inputPasswordLayout.setError(null);
+    }
+
+    @Override
+    public void showServerNotFoundError() {
+        Toast.makeText(this, R.string.error_server_not_found, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showProgressIndicator() {
+        progressBar.setVisibility(View.VISIBLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
+    @Override
+    public void hideProgressIndicator() {
+        progressBar.setVisibility(View.GONE);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
+    @Override
+    public void navigateToMainActivity() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }
 
