@@ -1,4 +1,4 @@
-package de.vanitasvitae.slam.activity;
+package de.vanitasvitae.slam.mvp.view;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -16,9 +16,11 @@ import de.vanitasvitae.slam.R;
 import de.vanitasvitae.slam.ui.ChatMessageEntry;
 
 /**
+ * Fragment that shows the conversation with a user.
+ *
  * Created by Paul Schaub on 30.01.18.
  */
-public class ChatFragment extends Fragment {
+public class ConversationFragment extends Fragment {
 
     @BindView(R.id.recycler_chat)
     RecyclerView recyclerView;

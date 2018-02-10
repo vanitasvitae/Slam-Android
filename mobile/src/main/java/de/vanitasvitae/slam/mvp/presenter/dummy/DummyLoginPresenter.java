@@ -1,12 +1,16 @@
-package de.vanitasvitae.slam.activity;
+package de.vanitasvitae.slam.mvp.presenter.dummy;
 
 import android.os.Handler;
 
-import de.vanitasvitae.slam.mvp_contracts.LoginContract;
+import org.jxmpp.jid.impl.JidCreate;
+import org.jxmpp.stringprep.XmppStringprepException;
+
+import de.vanitasvitae.slam.mvp.contracts.LoginContract;
 
 /**
  * Dummy presenter, that has no model.
  * This is used to demonstrate the capabilities of the view.
+ *
  * Created by Paul Schaub on 01.02.18.
  */
 public class DummyLoginPresenter implements LoginContract.Presenter {
@@ -19,10 +23,12 @@ public class DummyLoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void jidChanged(String jid) {
-        if (jid.length() < 10) {
-            view.showInvalidJidError();
-        } else {
+        // Check if jid is valid XMPP ID.
+        try {
+            JidCreate.entityBareFrom(jid);
             view.hideInvalidJidError();
+        } catch (XmppStringprepException e) {
+            view.showInvalidJidError();
         }
     }
 

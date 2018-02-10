@@ -9,11 +9,11 @@ import de.vanitasvitae.slam.R;
 /**
  * Created by Paul Schaub on 30.01.18.
  */
-public class ChatListEntry extends RecyclerView.ViewHolder {
+public class ConversationEntry extends RecyclerView.ViewHolder {
 
     private View view;
 
-    public ChatListEntry(View itemView) {
+    public ConversationEntry(View itemView) {
         super(itemView);
         this.view = itemView;
     }

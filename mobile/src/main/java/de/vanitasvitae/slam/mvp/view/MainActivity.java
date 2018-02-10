@@ -1,4 +1,4 @@
-package de.vanitasvitae.slam.activity;
+package de.vanitasvitae.slam.mvp.view;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -13,9 +13,11 @@ import android.widget.FrameLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.vanitasvitae.slam.R;
-import de.vanitasvitae.slam.activity.abstr.ThemedAppCompatActivity;
+import de.vanitasvitae.slam.mvp.view.abstr.ThemedAppCompatActivity;
 
 /**
+ * Main activity that hosts some fragments.
+ *
  * Created by vanitas on 22.01.18.
  */
 public class MainActivity extends ThemedAppCompatActivity {
@@ -48,7 +50,7 @@ public class MainActivity extends ThemedAppCompatActivity {
                 this, drawerLayout, toolbar, R.string.error_incorrect_password, R.string.error_invalid_jid);
         drawerLayout.addDrawerListener(drawerToggle);
 
-        Fragment chatListFragment = new ChatListFragment();
+        Fragment chatListFragment = new ConversationListFragment();
         Log.d(TAG, "Begin Transaction");
         getFragmentManager().beginTransaction().add(R.id.fragment_container, chatListFragment).commit();
     }

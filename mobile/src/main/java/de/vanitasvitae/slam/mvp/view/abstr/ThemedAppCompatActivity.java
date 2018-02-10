@@ -1,4 +1,4 @@
-package de.vanitasvitae.slam.activity.abstr;
+package de.vanitasvitae.slam.mvp.view.abstr;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

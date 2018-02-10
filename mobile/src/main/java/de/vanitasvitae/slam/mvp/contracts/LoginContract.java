@@ -1,4 +1,4 @@
-package de.vanitasvitae.slam.mvp_contracts;
+package de.vanitasvitae.slam.mvp.contracts;
 
 /**
  * Model-View-Presenter contract of the login screen.

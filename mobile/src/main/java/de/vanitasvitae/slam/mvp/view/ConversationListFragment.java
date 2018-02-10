@@ -1,24 +1,24 @@
-package de.vanitasvitae.slam.activity;
+package de.vanitasvitae.slam.mvp.view;
 
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.vanitasvitae.slam.R;
-import de.vanitasvitae.slam.ui.ChatListEntry;
+import de.vanitasvitae.slam.ui.ConversationEntry;
 
 /**
+ * Fragment that lists conversations the user takes part in.
+ *
  * Created by Paul Schaub on 30.01.18.
  */
-public class ChatListFragment extends Fragment {
+public class ConversationListFragment extends Fragment {
 
     @BindView(R.id.recycler_chatlist)
     RecyclerView recyclerView;
@@ -39,21 +39,21 @@ public class ChatListFragment extends Fragment {
         final boolean[] reads = {true, false, true};
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(new RecyclerView.Adapter<ChatListEntry>() {
+        recyclerView.setAdapter(new RecyclerView.Adapter<ConversationEntry>() {
             @Override
-            public ChatListEntry onCreateViewHolder(ViewGroup parent, int viewType) {
+            public ConversationEntry onCreateViewHolder(ViewGroup parent, int viewType) {
                 View view1 = LayoutInflater.from(getActivity()).inflate(R.layout.chatlist_singlechat, parent, false);
                 view1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, new ChatFragment()).commit();
+                        getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, new ConversationFragment()).commit();
                     }
                 });
-                return new ChatListEntry(view1);
+                return new ConversationEntry(view1);
             }
 
             @Override
-            public void onBindViewHolder(ChatListEntry holder, int position) {
+            public void onBindViewHolder(ConversationEntry holder, int position) {
                 holder.bind(
                         usernames[position],
                         messages[position],

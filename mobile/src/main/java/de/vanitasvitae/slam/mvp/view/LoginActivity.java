@@ -1,4 +1,4 @@
-package de.vanitasvitae.slam.activity;
+package de.vanitasvitae.slam.mvp.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,11 +17,12 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import de.vanitasvitae.slam.AfterTextChangedListener;
+import de.vanitasvitae.slam.AbstractTextWatcher;
 import de.vanitasvitae.slam.EditorActionDoneListener;
 import de.vanitasvitae.slam.R;
-import de.vanitasvitae.slam.activity.abstr.ThemedAppCompatActivity;
-import de.vanitasvitae.slam.mvp_contracts.LoginContract;
+import de.vanitasvitae.slam.mvp.view.abstr.ThemedAppCompatActivity;
+import de.vanitasvitae.slam.mvp.presenter.dummy.DummyLoginPresenter;
+import de.vanitasvitae.slam.mvp.contracts.LoginContract;
 
 public class LoginActivity extends ThemedAppCompatActivity implements LoginContract.View {
 
@@ -67,14 +68,14 @@ public class LoginActivity extends ThemedAppCompatActivity implements LoginContr
             }
         });
 
-        inputUsername.addTextChangedListener(new AfterTextChangedListener() {
+        inputUsername.addTextChangedListener(new AbstractTextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
                 presenter.jidChanged(s.toString());
             }
         });
 
-        inputPassword.addTextChangedListener(new AfterTextChangedListener() {
+        inputPassword.addTextChangedListener(new AbstractTextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
                 presenter.passwordChanged(s.toString());
