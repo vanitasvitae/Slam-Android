@@ -15,43 +15,30 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
  */
-package de.vanitasvitae.slam.mvp.presenter;
+package de.vanitasvitae.slam.mvp.presenter.dummy;
 
-import org.jxmpp.jid.BareJid;
-import org.jxmpp.jid.impl.JidCreate;
-import org.jxmpp.stringprep.XmppStringprepException;
+import de.vanitasvitae.slam.mvp.contracts.SearchContract;
 
-import de.vanitasvitae.slam.mvp.contracts.LoginContract;
+public class DummySearchPresenter implements SearchContract.Presenter {
 
-public class LoginPresenter implements LoginContract.Presenter {
+    private final SearchContract.View view;
 
-    private final LoginContract.View view;
-
-    private BareJid jid;
-    private String password;
-
-    public LoginPresenter(LoginContract.View view) {
+    public DummySearchPresenter(SearchContract.View view) {
         this.view = view;
     }
 
     @Override
-    public void jidChanged(String jid) {
-        try {
-            this.jid = JidCreate.entityBareFrom(jid);
-            view.hideInvalidJidError();
-        } catch (XmppStringprepException e) {
-            this.jid = null;
-            view.showInvalidJidError();
-        }
-    }
-
-    @Override
-    public void passwordChanged(String password) {
+    public void onSearchQueryChanged(String query) {
 
     }
 
     @Override
-    public void loginClicked() {
+    public void onSearchResultClick() {
+
+    }
+
+    @Override
+    public void onSearchScrolledToBottom() {
 
     }
 }

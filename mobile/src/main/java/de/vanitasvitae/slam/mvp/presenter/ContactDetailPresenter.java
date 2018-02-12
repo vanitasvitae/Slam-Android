@@ -18,40 +18,60 @@
 package de.vanitasvitae.slam.mvp.presenter;
 
 import org.jxmpp.jid.BareJid;
-import org.jxmpp.jid.impl.JidCreate;
-import org.jxmpp.stringprep.XmppStringprepException;
 
-import de.vanitasvitae.slam.mvp.contracts.LoginContract;
+import de.vanitasvitae.slam.mvp.contracts.ContactDetailContract;
 
-public class LoginPresenter implements LoginContract.Presenter {
+public class ContactDetailPresenter implements ContactDetailContract.Presenter {
 
-    private final LoginContract.View view;
+    private final ContactDetailContract.View view;
+    private BareJid contact;
 
-    private BareJid jid;
-    private String password;
-
-    public LoginPresenter(LoginContract.View view) {
+    public ContactDetailPresenter(ContactDetailContract.View view) {
         this.view = view;
     }
 
     @Override
-    public void jidChanged(String jid) {
-        try {
-            this.jid = JidCreate.entityBareFrom(jid);
-            view.hideInvalidJidError();
-        } catch (XmppStringprepException e) {
-            this.jid = null;
-            view.showInvalidJidError();
-        }
-    }
-
-    @Override
-    public void passwordChanged(String password) {
+    public void onAvatarClick() {
 
     }
 
     @Override
-    public void loginClicked() {
+    public void onSharedMediaClick() {
+
+    }
+
+    @Override
+    public void onAudioCallClick() {
+
+    }
+
+    @Override
+    public void onVideoCallClick() {
+
+    }
+
+    @Override
+    public void onShareContactClick() {
+
+    }
+
+    @Override
+    public void onBlockContactClick() {
+
+    }
+
+    @Override
+    public void onEditClick() {
+
+    }
+
+    @Override
+    public void onDeleteClick() {
+
+    }
+
+    @Override
+    public void onFingerprintTrustChanged() {
 
     }
 }

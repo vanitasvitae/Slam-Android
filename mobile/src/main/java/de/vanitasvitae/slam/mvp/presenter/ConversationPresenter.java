@@ -17,41 +17,45 @@
  */
 package de.vanitasvitae.slam.mvp.presenter;
 
-import org.jxmpp.jid.BareJid;
-import org.jxmpp.jid.impl.JidCreate;
-import org.jxmpp.stringprep.XmppStringprepException;
+import org.jxmpp.jid.EntityBareJid;
 
-import de.vanitasvitae.slam.mvp.contracts.LoginContract;
+import de.vanitasvitae.slam.mvp.contracts.ConversationContract;
 
-public class LoginPresenter implements LoginContract.Presenter {
+public class ConversationPresenter implements ConversationContract.Presenter {
 
-    private final LoginContract.View view;
+    private final ConversationContract.View view;
 
-    private BareJid jid;
-    private String password;
-
-    public LoginPresenter(LoginContract.View view) {
+    public ConversationPresenter(ConversationContract.View view) {
         this.view = view;
     }
 
     @Override
-    public void jidChanged(String jid) {
-        try {
-            this.jid = JidCreate.entityBareFrom(jid);
-            view.hideInvalidJidError();
-        } catch (XmppStringprepException e) {
-            this.jid = null;
-            view.showInvalidJidError();
-        }
-    }
-
-    @Override
-    public void passwordChanged(String password) {
+    public void setPeersJid(EntityBareJid jid) {
 
     }
 
     @Override
-    public void loginClicked() {
+    public void onConversationScrolledToTop() {
+
+    }
+
+    @Override
+    public void onComposingMessageChanged(String composingMessage) {
+
+    }
+
+    @Override
+    public void onMessageItemClick() {
+
+    }
+
+    @Override
+    public void onMessageItemLongClick() {
+
+    }
+
+    @Override
+    public void onMessageItemSenderClick() {
 
     }
 }

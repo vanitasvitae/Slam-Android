@@ -1,3 +1,20 @@
+/*
+ * Copyright 2018 Paul Schaub
+ *
+ * This code is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+ */
 package de.vanitasvitae.slam.mvp.view;
 
 import android.content.Intent;
@@ -20,6 +37,8 @@ import butterknife.OnClick;
 import de.vanitasvitae.slam.AbstractTextWatcher;
 import de.vanitasvitae.slam.EditorActionDoneListener;
 import de.vanitasvitae.slam.R;
+import de.vanitasvitae.slam.mvp.DummyPresenterFactory;
+import de.vanitasvitae.slam.mvp.PresenterFactory;
 import de.vanitasvitae.slam.mvp.view.abstr.ThemedAppCompatActivity;
 import de.vanitasvitae.slam.mvp.presenter.dummy.DummyLoginPresenter;
 import de.vanitasvitae.slam.mvp.contracts.LoginContract;
@@ -50,6 +69,11 @@ public class LoginActivity extends ThemedAppCompatActivity implements LoginContr
     @BindView(R.id.button_login)
     Button buttonLogin;
 
+    public LoginActivity() {
+        super();
+        this.presenter = PresenterFactory.getInstance().createLoginPresenter(this);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +81,6 @@ public class LoginActivity extends ThemedAppCompatActivity implements LoginContr
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
-
-        this.presenter = new DummyLoginPresenter(this);
 
         // attempt login on editor action done
         inputPassword.setOnEditorActionListener(new EditorActionDoneListener() {

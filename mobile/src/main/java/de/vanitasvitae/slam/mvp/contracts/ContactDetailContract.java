@@ -17,32 +17,32 @@
  */
 package de.vanitasvitae.slam.mvp.contracts;
 
-import org.jxmpp.jid.BareJid;
+import org.jivesoftware.smack.packet.Presence;
 
 import java.util.List;
 
-import de.vanitasvitae.slam.mvp.view.ConversationListFragment;
-
 /**
- * Model-View-Presenter contract for the {@link ConversationListFragment}.
- *
- * Created by Paul Schaub on 01.02.18.
+ * Model-View-Presenter contract for the {@link de.vanitasvitae.slam.mvp.view.ContactDetailFragment}.
  */
-public interface ContactListContract {
+public interface ContactDetailContract {
 
     interface View {
-        void addContactListItems(List<?> contacts);
-        void clearContactListItems();
-        void onUpdateContactPresence();
-        void showContactListLoadingIndicator();
-        void hideContactListLoadingIndicator();
-        void navigateToConversation(BareJid contact);
+        void setContactAvatar();
+        void setNickname(String nickname);
+        void setPresence(Presence presence);
+        void clearFingerprints();
+        void addFingerprints(List<?> fingerprints);
     }
 
     interface Presenter {
-        void onContactListItemClick();
-        void onContactListItemLongClick();
-        void addNewContact();
-        void deleteContact();
+        void onAvatarClick();
+        void onSharedMediaClick();
+        void onAudioCallClick();
+        void onVideoCallClick();
+        void onShareContactClick();
+        void onBlockContactClick();
+        void onEditClick();
+        void onDeleteClick();
+        void onFingerprintTrustChanged();
     }
 }

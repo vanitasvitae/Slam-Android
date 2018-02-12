@@ -17,25 +17,15 @@
  */
 package de.vanitasvitae.slam;
 
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.app.Application;
 
-/**
- * Abstract TextWatcher, that has method stubs for all methods..
- */
-public abstract class AbstractTextWatcher implements TextWatcher {
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        // Do nothing
-    }
+import de.vanitasvitae.slam.mvp.DummyPresenterFactory;
+import de.vanitasvitae.slam.mvp.PresenterFactory;
 
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-        // Do nothing
-    }
+public class SlamApplication extends Application {
 
-    @Override
-    public void afterTextChanged(Editable s) {
-        // Do nothing
+    public SlamApplication() {
+        super();
+        PresenterFactory.setInstance(new DummyPresenterFactory());
     }
 }
