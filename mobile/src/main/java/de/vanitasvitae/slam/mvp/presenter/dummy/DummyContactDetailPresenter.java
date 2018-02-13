@@ -17,9 +17,15 @@
  */
 package de.vanitasvitae.slam.mvp.presenter.dummy;
 
+import android.util.Log;
+
 import org.jxmpp.jid.BareJid;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.vanitasvitae.slam.mvp.contracts.ContactDetailContract;
+import de.vanitasvitae.slam.xmpp.Resource;
 
 public class DummyContactDetailPresenter implements ContactDetailContract.Presenter {
 
@@ -28,6 +34,17 @@ public class DummyContactDetailPresenter implements ContactDetailContract.Presen
 
     public DummyContactDetailPresenter(ContactDetailContract.View view) {
         this.view = view;
+
+        Log.d("SLAM", "Set dummy resources");
+        view.setResources(dummyResources());
+    }
+
+    private List<Resource> dummyResources() {
+        List<Resource> r = new ArrayList<>();
+        r.add(new Resource("Mobile", "Away since 15min", "Conversations 1.23.4", "Android"));
+        r.add(new Resource("Laptop", "online", "Gajim 16.0.6", "Arch Linux"));
+        r.add(new Resource("Desktop", "I like coffee!", "Dino", "Debian Stable"));
+        return r;
     }
 
     @Override

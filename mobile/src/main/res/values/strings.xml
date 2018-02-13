@@ -8,25 +8,40 @@
     <string name="app_name" translatable="false">&appname;</string>
 
     <!-- Strings related to login -->
-    <string name="item_menu_login__advanced_options">Advanced Options</string>
+    <string name="login__advanced_options">Advanced Options</string>
 
-    <string name="hint_jid">Jabber ID</string>
-    <string name="hint_password">Password</string>
-    <string name="button_login_account">Login</string>
-    <string name="button_register_account">Register</string>
-    <string name="error_invalid_jid">Invalid Jabber ID</string>
-    <string name="error_invalid_password">Password is too short</string>
-    <string name="error_incorrect_password">Password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
+    <string name="login__hint_jid">Jabber ID</string>
+    <string name="login__hint_password">Password</string>
+    <string name="login__button_login">Login</string>
+    <string name="login__button_register">Register</string>
+    <string name="login__error_invalid_jid">Invalid Jabber ID</string>
+    <string name="login__error_invalid_password">Password is too short</string>
+    <string name="login__error_incorrect_password">Password is incorrect</string>
+    <string name="login__error_field_required">This field is required</string>
+    <string name="login__error_server_not_found">Server not found</string>
 
-    <!-- Toolbar -->
-    <string name="search">Search</string>
-    <string name="settings">Settings</string>
+    <!-- Main Toolbar -->
+    <string name="toolbar__search">Search</string>
+    <string name="toolbar__settings">Settings</string>
 
     <!-- Navigation Drawer -->
-    <string name="item_navdrawer__contacts">Contacts</string>
-    <string name="item_navdrawer__bookmarks">Bookmarks</string>
-    <string name="item_navdrawer__settings">Settings</string>
-    <string name="error_server_not_found">Server not found</string>
+    <string name="navdrawer__conversations">Conversations</string>
+    <string name="navdrawer__contacts">Contacts</string>
+    <string name="navdrawer__groupchats">Groups</string>
+    <string name="navdrawer__blogging">Blogging</string>
+    <string name="navdrawer__settings">Settings</string>
+
+    <!-- Contact Detail -->
+    <string name="contact_detail__tab_info">Info</string>
+    <string name="contact_detail__tab_security">Security</string>
+
+    <string name="contact_detail__devices">Devices</string>
+
+    <string name="contact_detail__fingerprints_omemo">OMEMO Fingerprints</string>
+
+    <!-- Encryption Modes -->
+    <string name="desc_omemo">Confabulate</string>
+    <string name="desc_ox">Keep a History</string>
+    <string name="feature_not_implemented">Feature not implemented.</string>
 
 </resources>

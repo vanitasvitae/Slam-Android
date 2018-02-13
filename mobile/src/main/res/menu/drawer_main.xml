@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/item_navdrawer__contacts"
-        android:title="@string/item_navdrawer__contacts"
+    <item android:id="@+id/navdrawer__item_conversations"
+        android:title="@string/navdrawer__conversations"
+        android:icon="?attr/themedConversationsDrawable"/>
+
+    <item android:id="@+id/navdrawer__item_contacts"
+        android:title="@string/navdrawer__contacts"
         android:icon="?attr/themedContactDrawable"/>
 
-    <item android:id="@+id/item_navdrawer__bookmarks"
-        android:title="@string/item_navdrawer__bookmarks"
+    <item android:id="@+id/navdrawer__item_bookmarks"
+        android:title="@string/navdrawer__groupchats"
         android:icon="?attr/themedBookmarkDrawable"/>
 
-    <item android:id="@+id/item_navdrawer__settings"
-        android:title="@string/item_navdrawer__settings"
+    <item android:id="@+id/navdrawer__item_blogging"
+        android:title="@string/navdrawer__blogging"
+        android:icon="?attr/themedBloggingDrawable"/>
+
+    <item android:id="@+id/navdrawer__item_settings"
+        android:title="@string/navdrawer__settings"
         android:icon="?attr/themedSettingsDrawable"/>
 </menu>

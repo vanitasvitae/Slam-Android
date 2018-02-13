@@ -29,17 +29,18 @@ import de.vanitasvitae.slam.R;
  */
 public class ChatMessageEntry extends RecyclerView.ViewHolder {
 
-    private View view;
-
     public ChatMessageEntry(View itemView) {
         super(itemView);
-        this.view = itemView;
     }
 
     public void bind(String sender, String role, View content, String date) {
-        ((TextView)view.findViewById(R.id.message_sender)).setText(sender);
-        ((TextView)view.findViewById(R.id.message_sender_role)).setText(role);
-        ((RelativeLayout)view.findViewById(R.id.message_content)).addView(content);
-        ((TextView)view.findViewById(R.id.message_date)).setText(date);
+        ((TextView)itemView.findViewById(R.id.message_sender)).setText(sender);
+        ((TextView)itemView.findViewById(R.id.message_sender_role)).setText(role);
+        ((RelativeLayout)itemView.findViewById(R.id.message_content)).addView(content);
+        ((TextView)itemView.findViewById(R.id.message_date)).setText(date);
+    }
+
+    public void setOnAvatarClickListener(View.OnClickListener listener) {
+        itemView.findViewById(R.id.contact_image).setOnClickListener(listener);
     }
 }

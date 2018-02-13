@@ -37,10 +37,8 @@ import butterknife.OnClick;
 import de.vanitasvitae.slam.AbstractTextWatcher;
 import de.vanitasvitae.slam.EditorActionDoneListener;
 import de.vanitasvitae.slam.R;
-import de.vanitasvitae.slam.mvp.DummyPresenterFactory;
 import de.vanitasvitae.slam.mvp.PresenterFactory;
 import de.vanitasvitae.slam.mvp.view.abstr.ThemedAppCompatActivity;
-import de.vanitasvitae.slam.mvp.presenter.dummy.DummyLoginPresenter;
 import de.vanitasvitae.slam.mvp.contracts.LoginContract;
 
 public class LoginActivity extends ThemedAppCompatActivity implements LoginContract.View {
@@ -118,17 +116,17 @@ public class LoginActivity extends ThemedAppCompatActivity implements LoginContr
 
     @Override
     public void showInvalidJidError() {
-        inputUsernameLayout.setError(getResources().getText(R.string.error_invalid_jid));
+        inputUsernameLayout.setError(getResources().getText(R.string.login__error_invalid_jid));
     }
 
     @Override
     public void showInvalidPasswordError() {
-        inputPasswordLayout.setError(getResources().getText(R.string.error_invalid_password));
+        inputPasswordLayout.setError(getResources().getText(R.string.login__error_invalid_password));
     }
 
     @Override
     public void showIncorrectPasswordError() {
-        inputPasswordLayout.setError(getResources().getText(R.string.error_incorrect_password));
+        inputPasswordLayout.setError(getResources().getText(R.string.login__error_incorrect_password));
     }
 
     @Override
@@ -143,7 +141,7 @@ public class LoginActivity extends ThemedAppCompatActivity implements LoginContr
 
     @Override
     public void showServerNotFoundError() {
-        Toast.makeText(this, R.string.error_server_not_found, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.login__error_server_not_found, Toast.LENGTH_LONG).show();
     }
 
     @Override

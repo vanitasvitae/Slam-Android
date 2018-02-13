@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".mvp.view.MainActivity" />
+        <activity android:name=".mvp.view.ContactDetailActivity" />
 
         <meta-data
             android:name="com.google.android.gms.car.application"

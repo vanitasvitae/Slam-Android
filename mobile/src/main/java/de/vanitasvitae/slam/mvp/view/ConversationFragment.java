@@ -17,8 +17,9 @@
  */
 package de.vanitasvitae.slam.mvp.view;
 
-import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -61,15 +62,7 @@ public class ConversationFragment extends Fragment implements ConversationContra
     private final RecyclerView.Adapter<ChatMessageEntry> chatMessageAdapter = new RecyclerView.Adapter<ChatMessageEntry>() {
         @Override
         public ChatMessageEntry onCreateViewHolder(ViewGroup parent, int viewType) {
-            View messageView = LayoutInflater.from(getActivity()).inflate(R.layout.item_chatmessage, parent, false);
-            messageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    getFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_container, new ContactDetailFragment())
-                            .commit();
-                }
-            });
+            View messageView = LayoutInflater.from(getActivity()).inflate(R.layout.item_conversation_message, parent, false);
             return new ChatMessageEntry(messageView);
         }
 
@@ -83,6 +76,13 @@ public class ConversationFragment extends Fragment implements ConversationContra
             ((TextView)content).setText(message.getBody());
 
             holder.bind(sender, role, content, "now");
+
+            holder.setOnAvatarClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navigateToContactProfile();
+                }
+            });
         }
 
         @Override
@@ -99,7 +99,7 @@ public class ConversationFragment extends Fragment implements ConversationContra
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_chat, container, false);
+        View view = inflater.inflate(R.layout.fragment_conversation, container, false);
         ButterKnife.bind(this, view);
 
         Bundle arguments = getArguments();
@@ -145,10 +145,6 @@ public class ConversationFragment extends Fragment implements ConversationContra
 
     @Override
     public void navigateToContactProfile() {
-        getFragmentManager().beginTransaction()
-                .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-                .add(R.id.fragment_container, new ContactDetailFragment())
-                .addToBackStack("detail")
-                .commit();
+        startActivity(new Intent(getContext(), ContactDetailActivity.class));
     }
 }

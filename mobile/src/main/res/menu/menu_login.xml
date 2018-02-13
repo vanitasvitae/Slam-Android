@@ -3,6 +3,6 @@
 
     <item
         android:id="@+id/item_menu_login__advanced_options"
-        android:title="@string/item_menu_login__advanced_options" />
+        android:title="@string/login__advanced_options" />
 
 </menu>

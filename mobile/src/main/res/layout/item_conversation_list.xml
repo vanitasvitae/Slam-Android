@@ -64,7 +64,7 @@
                 android:layout_toStartOf="@+id/lower_meta">
 
                 <TextView
-                    android:id="@+id/contact_textcontent"
+                    android:id="@+id/contact_jid"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Ich war letzte Woche noch da und habe mir einen eigenen Eindruck von der Lage verschafft."/>

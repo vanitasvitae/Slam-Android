@@ -17,19 +17,19 @@
  */
 package de.vanitasvitae.slam.mvp.contracts;
 
-import org.jivesoftware.smack.packet.Presence;
-
 import java.util.List;
 
+import de.vanitasvitae.slam.xmpp.Resource;
+
 /**
- * Model-View-Presenter contract for the {@link de.vanitasvitae.slam.mvp.view.ContactDetailFragment}.
+ * Model-View-Presenter contract for the {@link de.vanitasvitae.slam.mvp.view.ContactDetailActivity}.
  */
 public interface ContactDetailContract {
 
     interface View {
         void setContactAvatar();
         void setNickname(String nickname);
-        void setPresence(Presence presence);
+        void setResources(List<Resource> presences);
         void clearFingerprints();
         void addFingerprints(List<?> fingerprints);
     }

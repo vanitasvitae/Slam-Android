@@ -32,6 +32,7 @@ public interface ConversationListContract {
     interface View {
         void populateConversationList(List<Conversation> conversations);
         void navigateToConversation(BareJid contact);
+        void navigateToContactDetail(BareJid contact);
     }
 
     interface Presenter {

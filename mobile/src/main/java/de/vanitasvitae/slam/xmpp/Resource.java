@@ -18,33 +18,32 @@
 package de.vanitasvitae.slam.xmpp;
 
 /**
- * Created by Paul Schaub on 11.02.18.
+ * Created by Paul Schaub on 13.02.18.
  */
-public class Conversation {
+public class Resource {
 
-    private final Contact contact;
-    private final String lastMessage;
-    private final String date;
+    private final String resource, status, client, system;
 
-    public Conversation(Contact contact) {
-        this(contact, null, null);
+    public Resource(String resource, String status, String client, String system) {
+        this.resource = resource;
+        this.status = status;
+        this.client = client;
+        this.system = system;
     }
 
-    public Conversation(Contact contact, String lastMessage, String date) {
-        this.contact = contact;
-        this.lastMessage = lastMessage;
-        this.date = date;
+    public String getClient() {
+        return client;
     }
 
-    public Contact getContact() {
-        return contact;
+    public String getResource() {
+        return resource;
     }
 
-    public String getLastMessage() {
-        return lastMessage;
+    public String getStatus() {
+        return status;
     }
 
-    public String getDate() {
-        return date;
+    public String getSystem() {
+        return system;
     }
 }

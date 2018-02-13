@@ -61,7 +61,7 @@
                             android:id="@+id/login_username"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/hint_jid"
+                            android:hint="@string/login__hint_jid"
                             android:inputType="textEmailAddress"
                             android:nextFocusForward="@+id/login_password" />
 
@@ -79,7 +79,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textPassword"
-                            android:hint="@string/hint_password" />
+                            android:hint="@string/login__hint_password" />
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -94,7 +94,7 @@
                             android:layout_alignParentEnd="true"
                             android:background="@android:color/transparent"
                             android:textColor="@color/secondaryColor"
-                            android:text="@string/button_login_account" />
+                            android:text="@string/login__button_login" />
 
                     </RelativeLayout>
 

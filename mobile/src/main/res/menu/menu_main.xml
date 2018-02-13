@@ -5,8 +5,8 @@
     <item
         android:id="@+id/app_bar_search"
         android:icon="?attr/themedSearchDrawable"
-        android:title="@string/search"
-        app:actionViewClass="android.widget.SearchView"
+        android:title="@string/toolbar__search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="always"/>
 
     <item

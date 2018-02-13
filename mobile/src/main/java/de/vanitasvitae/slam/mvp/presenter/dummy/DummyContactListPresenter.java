@@ -17,6 +17,8 @@
  */
 package de.vanitasvitae.slam.mvp.presenter.dummy;
 
+import de.vanitasvitae.slam.mvp.DummyPresenterFactory;
+import de.vanitasvitae.slam.mvp.DummyStore;
 import de.vanitasvitae.slam.mvp.contracts.ContactListContract;
 
 public class DummyContactListPresenter implements ContactListContract.Presenter {
@@ -25,6 +27,7 @@ public class DummyContactListPresenter implements ContactListContract.Presenter 
 
     public DummyContactListPresenter(ContactListContract.View view) {
         this.view = view;
+        view.addContactListItems(DummyPresenterFactory.STORE.contacts);
     }
 
     @Override

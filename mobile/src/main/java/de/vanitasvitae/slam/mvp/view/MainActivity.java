@@ -17,15 +17,17 @@
  */
 package de.vanitasvitae.slam.mvp.view;
 
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,7 +37,7 @@ import de.vanitasvitae.slam.mvp.view.abstr.ThemedAppCompatActivity;
 /**
  * Main activity that hosts some fragments.
  */
-public class MainActivity extends ThemedAppCompatActivity {
+public class MainActivity extends ThemedAppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     public static final String TAG = "Slam!";
 
@@ -62,11 +64,12 @@ public class MainActivity extends ThemedAppCompatActivity {
         setSupportActionBar(toolbar);
 
         drawerToggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.error_incorrect_password, R.string.error_invalid_jid);
+                this, drawerLayout, toolbar, R.string.login__error_incorrect_password, R.string.login__error_invalid_jid);
         drawerLayout.addDrawerListener(drawerToggle);
+        navigationView.setNavigationItemSelectedListener(this);
 
         Fragment chatListFragment = new ConversationListFragment();
-        getFragmentManager().beginTransaction()
+        getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, chatListFragment)
                 .addToBackStack("conversation_list")
                 .commit();
@@ -82,5 +85,29 @@ public class MainActivity extends ThemedAppCompatActivity {
     public void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         drawerToggle.syncState();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        drawerLayout.closeDrawers();
+        switch (item.getItemId()) {
+            case R.id.navdrawer__item_conversations:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new ConversationListFragment())
+                        .commit();
+                return true;
+
+            case R.id.navdrawer__item_contacts:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new ContactListFragment())
+                        .commit();
+                return true;
+            case R.id.navdrawer__item_bookmarks:
+            case R.id.navdrawer__item_blogging:
+            case R.id.navdrawer__item_settings:
+                Toast.makeText(this, R.string.feature_not_implemented, Toast.LENGTH_SHORT).show();
+                return true;
+        }
+        return false;
     }
 }

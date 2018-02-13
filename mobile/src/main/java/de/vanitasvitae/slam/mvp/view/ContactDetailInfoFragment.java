@@ -15,36 +15,27 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
  */
-package de.vanitasvitae.slam.xmpp;
+package de.vanitasvitae.slam.mvp.view;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import butterknife.ButterKnife;
+import de.vanitasvitae.slam.R;
 
 /**
- * Created by Paul Schaub on 11.02.18.
+ * Created by Paul Schaub on 13.02.18.
  */
-public class Conversation {
+public class ContactDetailInfoFragment extends Fragment {
 
-    private final Contact contact;
-    private final String lastMessage;
-    private final String date;
-
-    public Conversation(Contact contact) {
-        this(contact, null, null);
-    }
-
-    public Conversation(Contact contact, String lastMessage, String date) {
-        this.contact = contact;
-        this.lastMessage = lastMessage;
-        this.date = date;
-    }
-
-    public Contact getContact() {
-        return contact;
-    }
-
-    public String getLastMessage() {
-        return lastMessage;
-    }
-
-    public String getDate() {
-        return date;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_contact_detail__info, container, false);
+        ButterKnife.bind(this, view);
+        return view;
     }
 }

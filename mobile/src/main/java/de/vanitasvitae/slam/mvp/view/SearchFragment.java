@@ -17,7 +17,7 @@
  */
 package de.vanitasvitae.slam.mvp.view;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 
 import java.util.List;
 

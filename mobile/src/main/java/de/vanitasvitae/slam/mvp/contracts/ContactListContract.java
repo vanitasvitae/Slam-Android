@@ -22,6 +22,7 @@ import org.jxmpp.jid.BareJid;
 import java.util.List;
 
 import de.vanitasvitae.slam.mvp.view.ConversationListFragment;
+import de.vanitasvitae.slam.xmpp.Contact;
 
 /**
  * Model-View-Presenter contract for the {@link ConversationListFragment}.
@@ -31,12 +32,13 @@ import de.vanitasvitae.slam.mvp.view.ConversationListFragment;
 public interface ContactListContract {
 
     interface View {
-        void addContactListItems(List<?> contacts);
+        void addContactListItems(List<Contact> contacts);
         void clearContactListItems();
         void onUpdateContactPresence();
         void showContactListLoadingIndicator();
         void hideContactListLoadingIndicator();
         void navigateToConversation(BareJid contact);
+        void navigateToContactDetail(BareJid contact);
     }
 
     interface Presenter {

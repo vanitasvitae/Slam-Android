@@ -22,21 +22,20 @@ import android.view.View;
 import android.widget.TextView;
 
 import de.vanitasvitae.slam.R;
+import de.vanitasvitae.slam.xmpp.Contact;
 
 /**
- * Created by Paul Schaub on 30.01.18.
+ * Created by Paul Schaub on 13.02.18.
  */
-public class ConversationEntry extends RecyclerView.ViewHolder {
+public class ContactListEntry extends RecyclerView.ViewHolder {
 
-    public ConversationEntry(View itemView) {
+    public ContactListEntry(View itemView) {
         super(itemView);
     }
 
-    public void bind(String username, String message, String date, boolean read) {
-        ((TextView)itemView.findViewById(R.id.contact_name)).setText(username);
-        ((TextView)itemView.findViewById(R.id.contact_jid)).setText(message);
-        ((TextView)itemView.findViewById(R.id.contact_date)).setText(date);
-        itemView.findViewById(R.id.send_indicator).setVisibility(read ? View.VISIBLE : View.GONE);
+    public void bind(Contact contact) {
+        ((TextView)itemView.findViewById(R.id.contact_name)).setText(contact.getNickname());
+        ((TextView)itemView.findViewById(R.id.contact_jid)).setText(contact.getJid());
     }
 
     public void setOnAvatarClickListener(View.OnClickListener listener) {

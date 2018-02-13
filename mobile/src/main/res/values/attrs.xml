@@ -22,4 +22,6 @@
     <attr name="themedAddBookmarkDrawable" format="reference" />
     <attr name="themedSettingsDrawable" format="reference" />
     <attr name="themedSearchDrawable" format="reference" />
+    <attr name="themedConversationsDrawable" format="reference" />
+    <attr name="themedBloggingDrawable" format="reference" />
 </resources>

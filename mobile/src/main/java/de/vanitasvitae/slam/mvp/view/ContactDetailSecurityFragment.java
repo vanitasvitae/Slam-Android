@@ -17,60 +17,26 @@
  */
 package de.vanitasvitae.slam.mvp.view;
 
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.jivesoftware.smack.packet.Presence;
-import org.jxmpp.jid.BareJid;
-
-import java.util.List;
-
 import butterknife.ButterKnife;
 import de.vanitasvitae.slam.R;
-import de.vanitasvitae.slam.mvp.PresenterFactory;
-import de.vanitasvitae.slam.mvp.contracts.ContactDetailContract;
 
-public class ContactDetailFragment extends Fragment implements ContactDetailContract.View {
-
-    private final ContactDetailContract.Presenter presenter;
-
-    public ContactDetailFragment() {
-        this.presenter = PresenterFactory.getInstance().createContactDetailPresenter(this);
-    }
+/**
+ * Created by Paul Schaub on 13.02.18.
+ */
+public class ContactDetailSecurityFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_contact_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_contact_detail__security, container, false);
         ButterKnife.bind(this, view);
         return view;
-    }
-
-    @Override
-    public void setContactAvatar() {
-
-    }
-
-    @Override
-    public void setNickname(String nickname) {
-
-    }
-
-    @Override
-    public void setPresence(Presence presence) {
-
-    }
-
-    @Override
-    public void clearFingerprints() {
-
-    }
-
-    @Override
-    public void addFingerprints(List<?> fingerprints) {
-
     }
 }

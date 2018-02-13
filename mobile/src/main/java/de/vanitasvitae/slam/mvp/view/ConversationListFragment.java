@@ -17,8 +17,9 @@
  */
 package de.vanitasvitae.slam.mvp.view;
 
-import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -45,44 +46,11 @@ import de.vanitasvitae.slam.xmpp.Conversation;
  */
 public class ConversationListFragment extends Fragment implements ConversationListContract.View {
 
-    @BindView(R.id.recycler_chatlist)
+    @BindView(R.id.recycler_list)
     RecyclerView recyclerView;
 
     private final ConversationListContract.Presenter presenter;
     private final List<Conversation> conversations = new ArrayList<>();
-
-    private final RecyclerView.Adapter<ConversationEntry> conversationEntryAdapter = new RecyclerView.Adapter<ConversationEntry>() {
-        @Override
-        public ConversationEntry onCreateViewHolder(ViewGroup parent, int viewType) {
-            View conversationView = LayoutInflater.from(getActivity()).inflate(R.layout.chatlist_singlechat, parent, false);
-            return new ConversationEntry(conversationView);
-        }
-
-        @Override
-        public void onBindViewHolder(final ConversationEntry holder, final int position) {
-            Conversation conversation = conversations.get(holder.getAdapterPosition());
-            String name = conversation.getContact().getNickname();
-
-            holder.bind(
-                    name != null ? name : conversation.getContact().getJid().toString(),
-                    conversation.getLastMessage(),
-                    conversation.getDate(),
-                    true);
-
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int pos = holder.getAdapterPosition();
-                    navigateToConversation(conversations.get(pos).getContact().getJid());
-                }
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return conversations.size();
-        }
-    };
 
     public ConversationListFragment() {
         super();
@@ -92,7 +60,7 @@ public class ConversationListFragment extends Fragment implements ConversationLi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_chatlist, container, false);
+        View view = inflater.inflate(R.layout.fragment_conversation_contact_list, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -120,8 +88,52 @@ public class ConversationListFragment extends Fragment implements ConversationLi
         fragment.setArguments(bundle);
 
         getFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, fragment)
+                .replace(R.id.fragment_container, fragment)
                 .addToBackStack("conversation")
                 .commit();
     }
+
+    @Override
+    public void navigateToContactDetail(BareJid contact) {
+        startActivity(new Intent(getContext(), ContactDetailActivity.class));
+    }
+
+    private final RecyclerView.Adapter<ConversationEntry> conversationEntryAdapter = new RecyclerView.Adapter<ConversationEntry>() {
+        @Override
+        public ConversationEntry onCreateViewHolder(ViewGroup parent, int viewType) {
+            View conversationView = LayoutInflater.from(getActivity()).inflate(R.layout.item_conversation_list, parent, false);
+            return new ConversationEntry(conversationView);
+        }
+
+        @Override
+        public void onBindViewHolder(final ConversationEntry holder, final int position) {
+            final Conversation conversation = conversations.get(holder.getAdapterPosition());
+            String name = conversation.getContact().getNickname();
+
+            holder.bind(
+                    name != null ? name : conversation.getContact().getJid().toString(),
+                    conversation.getLastMessage(),
+                    conversation.getDate(),
+                    true);
+
+            holder.setOnEntryClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navigateToConversation(conversation.getContact().getJid());
+                }
+            });
+
+            holder.setOnAvatarClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navigateToContactDetail(conversation.getContact().getJid());
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return conversations.size();
+        }
+    };
 }
