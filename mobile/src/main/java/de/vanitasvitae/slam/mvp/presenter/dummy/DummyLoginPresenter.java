@@ -72,7 +72,7 @@ public class DummyLoginPresenter implements LoginContract.Presenter {
             public void run() {
                 view.hideProgressIndicator();
             }
-        }, 2000);
+        }, 100);
 
         // startActivity
         handler.postDelayed(new Runnable() {
@@ -80,6 +80,6 @@ public class DummyLoginPresenter implements LoginContract.Presenter {
             public void run() {
                 view.navigateToMainActivity();
             }
-        }, 2500);
+        }, 250);
     }
 }

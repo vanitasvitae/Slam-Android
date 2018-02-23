@@ -42,7 +42,9 @@ import butterknife.ButterKnife;
 import de.vanitasvitae.slam.R;
 import de.vanitasvitae.slam.mvp.PresenterFactory;
 import de.vanitasvitae.slam.mvp.contracts.ConversationContract;
-import de.vanitasvitae.slam.ui.ChatMessageEntry;
+import de.vanitasvitae.slam.mvp.view.message.MessageAdapter;
+import de.vanitasvitae.slam.mvp.view.message.MessageView;
+import de.vanitasvitae.slam.xmpp.message.AbstractMessage;
 
 /**
  * Fragment that shows the conversation with a user.
@@ -57,32 +59,24 @@ public class ConversationFragment extends Fragment implements ConversationContra
     private final ConversationContract.Presenter presenter;
 
     Map<String, Integer> messageIdIndizes = new HashMap<>();
-    List<Message> messages = new ArrayList<>();
+    List<AbstractMessage> messages = new ArrayList<>();
 
-    private final RecyclerView.Adapter<ChatMessageEntry> chatMessageAdapter = new RecyclerView.Adapter<ChatMessageEntry>() {
-        @Override
-        public ChatMessageEntry onCreateViewHolder(ViewGroup parent, int viewType) {
-            View messageView = LayoutInflater.from(getActivity()).inflate(R.layout.item_conversation_message, parent, false);
-            return new ChatMessageEntry(messageView);
-        }
+    private final MessageAdapter messageAdapter = new MessageAdapter(getContext()) {
 
         @Override
-        public void onBindViewHolder(ChatMessageEntry holder, int position) {
-            Message message = messages.get(position);
-            String sender = message.getFrom().toString();
-            String role = "Member";
-            View content;
-            content = new TextView(getActivity());
-            ((TextView)content).setText(message.getBody());
-
-            holder.bind(sender, role, content, "now");
-
+        public void onBindViewHolder(MessageView holder, int position) {
+            super.onBindViewHolder(holder, position);
             holder.setOnAvatarClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     navigateToContactProfile();
                 }
             });
+        }
+
+        @Override
+        public AbstractMessage getItemAt(int position) {
+            return messages.get(position);
         }
 
         @Override
@@ -119,18 +113,18 @@ public class ConversationFragment extends Fragment implements ConversationContra
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(chatMessageAdapter);
+        recyclerView.setAdapter(messageAdapter);
         recyclerView.getAdapter().notifyDataSetChanged();
     }
 
     @Override
-    public void addMessageItems(List<Message> messages, boolean end) {
+    public void addMessageItems(List<AbstractMessage> messages, boolean end) {
         if (end) {
             this.messages.addAll(messages);
         } else {
             this.messages.addAll(0, messages);
         }
-        chatMessageAdapter.notifyDataSetChanged();
+        messageAdapter.notifyDataSetChanged();
     }
 
     @Override

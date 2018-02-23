@@ -109,7 +109,7 @@ public class ContactListFragment extends Fragment implements ContactListContract
         public void onBindViewHolder(ContactListEntry holder, int position) {
             final Contact contact = contacts.get(holder.getAdapterPosition());
             holder.bind(contact);
-            holder.setOnAvatarClickListener(new View.OnClickListener() {
+            holder.setOnEntryClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     navigateToContactDetail(contact.getJid());

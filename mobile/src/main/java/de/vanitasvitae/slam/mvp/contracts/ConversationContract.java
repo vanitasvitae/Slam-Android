@@ -23,6 +23,7 @@ import org.jxmpp.jid.EntityBareJid;
 import java.util.List;
 
 import de.vanitasvitae.slam.mvp.view.ConversationFragment;
+import de.vanitasvitae.slam.xmpp.message.AbstractMessage;
 
 /**
  * Model-View-Presenter contract for the {@link ConversationFragment}.
@@ -31,7 +32,7 @@ import de.vanitasvitae.slam.mvp.view.ConversationFragment;
 public interface ConversationContract {
 
     interface View {
-        void addMessageItems(List<Message> messages, boolean end);
+        void addMessageItems(List<AbstractMessage> messages, boolean end);
         void highlightMessageItem();
         void correctMessageItem();
         void navigateToContactProfile();
