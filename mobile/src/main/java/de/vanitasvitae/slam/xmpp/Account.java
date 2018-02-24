@@ -15,19 +15,10 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
  */
-package de.vanitasvitae.slam.mvp.contracts.message;
+package de.vanitasvitae.slam.xmpp;
 
 /**
- * Created by Paul Schaub on 23.02.18.
+ * Created by Paul Schaub on 24.02.18.
  */
-public interface TextMessageContract {
-
-    interface View extends AbstractMessageContract.View {
-        void setContent(CharSequence content);
-        void setStatusCorrected();
-    }
-
-    interface Presenter extends AbstractMessageContract.Presenter {
-        void onCorrectMessage();
-    }
+public class Account {
 }

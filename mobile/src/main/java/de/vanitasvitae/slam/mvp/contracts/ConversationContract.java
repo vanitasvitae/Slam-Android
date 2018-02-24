@@ -17,7 +17,6 @@
  */
 package de.vanitasvitae.slam.mvp.contracts;
 
-import org.jivesoftware.smack.packet.Message;
 import org.jxmpp.jid.EntityBareJid;
 
 import java.util.List;

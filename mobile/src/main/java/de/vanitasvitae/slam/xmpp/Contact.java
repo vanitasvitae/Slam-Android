@@ -25,15 +25,17 @@ import org.jxmpp.jid.BareJid;
 public class Contact {
 
     private final BareJid jid;
+    private final Account account;
     private String nickname;
 
-    public Contact(BareJid jid) {
-        this(jid, null);
+    public Contact(BareJid jid, Account account) {
+        this(jid, account, null);
     }
 
-    public Contact(BareJid jid, String nickname) {
+    public Contact(BareJid jid, Account account, String nickname) {
         this.jid = jid;
         this.nickname = nickname;
+        this.account = account;
     }
 
     public BareJid getJid() {
@@ -42,5 +44,13 @@ public class Contact {
 
     public String getNickname() {
         return nickname;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }

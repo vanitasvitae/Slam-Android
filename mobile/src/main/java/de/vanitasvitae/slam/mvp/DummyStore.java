@@ -29,9 +29,6 @@ import java.util.Map;
 
 import de.vanitasvitae.slam.xmpp.Contact;
 
-/**
- * Created by Paul Schaub on 11.02.18.
- */
 public class DummyStore {
 
     public final Map<BareJid, List<Message>> conversations = new HashMap<>();
@@ -45,10 +42,10 @@ public class DummyStore {
 
     private List<Contact> contacts() throws XmppStringprepException {
         List<Contact> l = new ArrayList<>();
-        l.add(new Contact(JidCreate.entityBareFrom("alice@wonderland.lit"), "Alice"));
-        l.add(new Contact(JidCreate.entityBareFrom("bob@builder.tv")));
-        l.add(new Contact(JidCreate.entityBareFrom("juliet@capulet.lit"), "Juliet"));
-        l.add(new Contact(JidCreate.entityBareFrom("romeo@montague.lit"), "Romeo <3"));
+        l.add(new Contact(JidCreate.entityBareFrom("alice@wonderland.lit"), null, "Alice"));
+        l.add(new Contact(JidCreate.entityBareFrom("bob@builder.tv"), null));
+        l.add(new Contact(JidCreate.entityBareFrom("juliet@capulet.lit"), null, "Juliet"));
+        l.add(new Contact(JidCreate.entityBareFrom("romeo@montague.lit"), null, "Romeo <3"));
         return l;
     }
 
