@@ -1,3 +1,6 @@
-# SLAM_Messenger
+# SLAM Messenger
 
 XMPP-Based Instant Messenger for Android
+
+*THIS PROJECT IS IN THE EARLIEST OF STAGES!*
+*FOR NOW THE GUI IS ONLY DEMOING!*
