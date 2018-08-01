@@ -17,12 +17,14 @@
  */
 package de.vanitasvitae.slam.mvp.contracts.message;
 
+import de.vanitasvitae.slam.mvp.contracts.BaseContract;
+
 /**
  * Model-View-Presenter contract for an abstract message.
  */
 public interface AbstractMessageContract {
 
-    interface View {
+    interface View extends BaseContract.BaseView<Presenter> {
         void setDirection(Direction direction);
         void setStatusSending();
         void setStatusSendingFailed();
@@ -33,7 +35,7 @@ public interface AbstractMessageContract {
         void displayErrorMessage();
     }
 
-    interface Presenter {
+    interface Presenter extends BaseContract.BasePresenter {
         void onDeleteMessage();
         void onReadMessage();
         void onMessageClick();

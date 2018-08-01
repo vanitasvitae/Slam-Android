@@ -34,6 +34,8 @@ import de.vanitasvitae.slam.xmpp.message.AbstractMessage;
 public abstract class MessageView<T extends AbstractMessage> extends RecyclerView.ViewHolder
         implements AbstractMessageContract.View {
 
+    protected AbstractMessageContract.Presenter presenter;
+
     public MessageView(View itemView) {
         super(itemView);
     }
@@ -82,5 +84,10 @@ public abstract class MessageView<T extends AbstractMessage> extends RecyclerVie
     @Override
     public void displayErrorMessage() {
 
+    }
+
+    @Override
+    public void setPresenter(AbstractMessageContract.Presenter presenter) {
+        this.presenter = presenter;
     }
 }

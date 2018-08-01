@@ -25,7 +25,7 @@ import java.util.List;
  */
 public interface SearchContract {
 
-    interface View {
+    interface View extends BaseContract.BaseView<Presenter> {
         void addSearchResults(List<?> results);
         void clearSearchResults();
         void showLoadingIndicator();
@@ -34,7 +34,7 @@ public interface SearchContract {
         void hideEmptySearchResults();
     }
 
-    interface Presenter {
+    interface Presenter extends BaseContract.BasePresenter {
         void onSearchQueryChanged(String query);
         void onSearchResultClick();
         void onSearchScrolledToBottom();

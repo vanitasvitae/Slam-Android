@@ -17,8 +17,12 @@
  */
 package de.vanitasvitae.slam.mvp.view;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
@@ -40,8 +44,9 @@ import de.vanitasvitae.slam.R;
 import de.vanitasvitae.slam.mvp.PresenterFactory;
 import de.vanitasvitae.slam.mvp.view.abstr.ThemedAppCompatActivity;
 import de.vanitasvitae.slam.mvp.contracts.LoginContract;
+import de.vanitasvitae.slam.service.SlamXmppService;
 
-public class LoginActivity extends ThemedAppCompatActivity implements LoginContract.View {
+public class LoginActivity extends ThemedAppCompatActivity implements LoginContract.View, ServiceConnection {
 
     // Presenter of this view
     private LoginContract.Presenter presenter;
@@ -67,9 +72,11 @@ public class LoginActivity extends ThemedAppCompatActivity implements LoginContr
     @BindView(R.id.button_login)
     Button buttonLogin;
 
+    private SlamXmppService slamService;
+
     public LoginActivity() {
         super();
-        this.presenter = PresenterFactory.getInstance().createLoginPresenter(this);
+        setPresenter(PresenterFactory.getInstance().createLoginPresenter(this));
     }
 
     @Override
@@ -103,8 +110,29 @@ public class LoginActivity extends ThemedAppCompatActivity implements LoginContr
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Start xmpp service
+        Intent serviceIntent = new Intent(this, SlamXmppService.class);
+        bindService(serviceIntent, this, Context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unbindService(this);
+    }
+
+    @Override
+    public void setPresenter(LoginContract.Presenter presenter) {
+        this.presenter = presenter;
+    }
+
     @OnClick(R.id.button_login)
     void login() {
+        Intent serviceIntent = new Intent(getApplicationContext(), SlamXmppService.class);
+        getApplicationContext().startService(serviceIntent);
         presenter.loginClicked();
     }
 
@@ -161,6 +189,29 @@ public class LoginActivity extends ThemedAppCompatActivity implements LoginContr
     public void navigateToMainActivity() {
         startActivity(new Intent(this, MainActivity.class));
         finish();
+    }
+
+    @Override
+    public void disableLoginButton() {
+        buttonLogin.setEnabled(false);
+    }
+
+    @Override
+    public void enableLoginButton() {
+        buttonLogin.setEnabled(true);
+    }
+
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+        SlamXmppService.SlamBinder binder = (SlamXmppService.SlamBinder) service;
+        slamService = binder.getService();
+        presenter.bindService(slamService);
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
+        slamService = null;
+        presenter.unbindService();
     }
 }
 

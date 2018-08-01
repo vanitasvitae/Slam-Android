@@ -23,6 +23,7 @@ import org.jxmpp.jid.impl.JidCreate;
 import org.jxmpp.stringprep.XmppStringprepException;
 
 import de.vanitasvitae.slam.mvp.contracts.LoginContract;
+import de.vanitasvitae.slam.service.SlamXmppService;
 
 /**
  * Dummy presenter, that has no model.
@@ -81,5 +82,15 @@ public class DummyLoginPresenter implements LoginContract.Presenter {
                 view.navigateToMainActivity();
             }
         }, 250);
+    }
+
+    @Override
+    public void bindService(SlamXmppService service) {
+
+    }
+
+    @Override
+    public void unbindService() {
+
     }
 }

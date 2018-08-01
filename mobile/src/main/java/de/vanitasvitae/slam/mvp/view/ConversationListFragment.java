@@ -49,12 +49,12 @@ public class ConversationListFragment extends Fragment implements ConversationLi
     @BindView(R.id.recycler_list)
     RecyclerView recyclerView;
 
-    private final ConversationListContract.Presenter presenter;
+    private ConversationListContract.Presenter presenter;
     private final List<Conversation> conversations = new ArrayList<>();
 
     public ConversationListFragment() {
         super();
-        this.presenter = PresenterFactory.getInstance().createConversationListPresenter(this);
+        setPresenter(PresenterFactory.getInstance().createConversationListPresenter(this));
     }
 
     @Override
@@ -70,6 +70,11 @@ public class ConversationListFragment extends Fragment implements ConversationLi
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(conversationEntryAdapter);
         recyclerView.getAdapter().notifyDataSetChanged();
+    }
+
+    @Override
+    public void setPresenter(ConversationListContract.Presenter presenter) {
+        this.presenter = presenter;
     }
 
     @Override

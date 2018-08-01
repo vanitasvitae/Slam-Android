@@ -29,13 +29,13 @@ import de.vanitasvitae.slam.xmpp.Conversation;
  */
 public interface ConversationListContract {
 
-    interface View {
+    interface View extends BaseContract.BaseView<Presenter> {
         void populateConversationList(List<Conversation> conversations);
         void navigateToConversation(BareJid contact);
         void navigateToContactDetail(BareJid contact);
     }
 
-    interface Presenter {
+    interface Presenter extends BaseContract.BasePresenter {
         void onConversationClick();
         void onConversationLongClick();
         void load();

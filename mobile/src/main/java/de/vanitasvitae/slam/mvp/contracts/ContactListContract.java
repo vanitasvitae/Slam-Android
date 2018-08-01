@@ -31,7 +31,7 @@ import de.vanitasvitae.slam.xmpp.Contact;
  */
 public interface ContactListContract {
 
-    interface View {
+    interface View extends BaseContract.BaseView<Presenter> {
         void addContactListItems(List<Contact> contacts);
         void clearContactListItems();
         void onUpdateContactPresence();
@@ -41,7 +41,7 @@ public interface ContactListContract {
         void navigateToContactDetail(BareJid contact);
     }
 
-    interface Presenter {
+    interface Presenter extends BaseContract.BasePresenter {
         void onContactListItemClick();
         void onContactListItemLongClick();
         void addNewContact();

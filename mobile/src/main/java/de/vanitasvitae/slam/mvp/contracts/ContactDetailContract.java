@@ -26,7 +26,7 @@ import de.vanitasvitae.slam.xmpp.Resource;
  */
 public interface ContactDetailContract {
 
-    interface View {
+    interface View extends BaseContract.BaseView<Presenter> {
         void setContactAvatar();
         void setNickname(String nickname);
         void setResources(List<Resource> presences);
@@ -34,7 +34,7 @@ public interface ContactDetailContract {
         void addFingerprints(List<?> fingerprints);
     }
 
-    interface Presenter {
+    interface Presenter extends BaseContract.BasePresenter {
         void onAvatarClick();
         void onSharedMediaClick();
         void onAudioCallClick();

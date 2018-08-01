@@ -15,19 +15,18 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
  */
-package de.vanitasvitae.slam;
+package de.vanitasvitae.slam.mvp.contracts;
 
-import android.app.Application;
-import android.content.Intent;
+/**
+ * Created by Paul Schaub on 24.02.18.
+ */
+public interface BaseContract {
 
-import de.vanitasvitae.slam.mvp.DummyPresenterFactory;
-import de.vanitasvitae.slam.mvp.PresenterFactory;
-import de.vanitasvitae.slam.service.SlamXmppService;
+    interface BaseView<T extends BasePresenter> {
+        void setPresenter(T presenter);
+    }
 
-public class SlamApplication extends Application {
+    interface BasePresenter {
 
-    public SlamApplication() {
-        super();
-        PresenterFactory.setInstance(new PresenterFactory());
     }
 }

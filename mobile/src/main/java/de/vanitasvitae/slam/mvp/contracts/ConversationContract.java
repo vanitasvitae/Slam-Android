@@ -30,14 +30,14 @@ import de.vanitasvitae.slam.xmpp.message.AbstractMessage;
  */
 public interface ConversationContract {
 
-    interface View {
+    interface View extends BaseContract.BaseView<Presenter> {
         void addMessageItems(List<AbstractMessage> messages, boolean end);
         void highlightMessageItem();
         void correctMessageItem();
         void navigateToContactProfile();
     }
 
-    interface Presenter {
+    interface Presenter extends BaseContract.BasePresenter {
         void setPeersJid(EntityBareJid jid);
         void onConversationScrolledToTop();
         void onComposingMessageChanged(String composingMessage);

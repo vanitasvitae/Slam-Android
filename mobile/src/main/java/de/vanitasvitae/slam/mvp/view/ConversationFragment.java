@@ -56,7 +56,7 @@ public class ConversationFragment extends Fragment implements ConversationContra
     @BindView(R.id.recycler_chat)
     RecyclerView recyclerView;
 
-    private final ConversationContract.Presenter presenter;
+    private ConversationContract.Presenter presenter;
 
     Map<String, Integer> messageIdIndizes = new HashMap<>();
     List<AbstractMessage> messages = new ArrayList<>();
@@ -87,7 +87,7 @@ public class ConversationFragment extends Fragment implements ConversationContra
 
     public ConversationFragment() {
         super();
-        this.presenter = PresenterFactory.getInstance().createConversationPresenter(this);
+        setPresenter(PresenterFactory.getInstance().createConversationPresenter(this));
     }
 
     @Override
@@ -115,6 +115,11 @@ public class ConversationFragment extends Fragment implements ConversationContra
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(messageAdapter);
         recyclerView.getAdapter().notifyDataSetChanged();
+    }
+
+    @Override
+    public void setPresenter(ConversationContract.Presenter presenter) {
+        this.presenter = presenter;
     }
 
     @Override

@@ -45,7 +45,7 @@ public class ContactDetailActivity extends ThemedAppCompatActivity
 
     public static final String TAG = "Slam!";
 
-    private final ContactDetailContract.Presenter presenter;
+    private ContactDetailContract.Presenter presenter;
 
     private final ContactDetailResourcesFragment resourcesFragment = new ContactDetailResourcesFragment();
     private final ContactDetailInfoFragment infoFragment = new ContactDetailInfoFragment();
@@ -71,7 +71,7 @@ public class ContactDetailActivity extends ThemedAppCompatActivity
     private int animateProfileCirclePercent = 30;
 
     public ContactDetailActivity() {
-        this.presenter = PresenterFactory.getInstance().createContactDetailPresenter(this);
+        setPresenter(PresenterFactory.getInstance().createContactDetailPresenter(this));
     }
 
     @Override
@@ -149,6 +149,11 @@ public class ContactDetailActivity extends ThemedAppCompatActivity
     @Override
     public void addFingerprints(List<?> fingerprints) {
 
+    }
+
+    @Override
+    public void setPresenter(ContactDetailContract.Presenter presenter) {
+        this.presenter = presenter;
     }
 
     class DetailFragmentPagerAdapter extends FragmentPagerAdapter {

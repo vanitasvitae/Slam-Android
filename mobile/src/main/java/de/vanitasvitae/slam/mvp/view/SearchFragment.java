@@ -31,10 +31,10 @@ import de.vanitasvitae.slam.mvp.contracts.SearchContract;
  */
 public class SearchFragment extends Fragment implements SearchContract.View {
 
-    private final SearchContract.Presenter presenter;
+    private SearchContract.Presenter presenter;
 
     public SearchFragment() {
-        this.presenter = PresenterFactory.getInstance().createSearchPresenter(this);
+        setPresenter(PresenterFactory.getInstance().createSearchPresenter(this));
     }
 
     @Override
@@ -65,5 +65,10 @@ public class SearchFragment extends Fragment implements SearchContract.View {
     @Override
     public void hideEmptySearchResults() {
 
+    }
+
+    @Override
+    public void setPresenter(SearchContract.Presenter presenter) {
+        this.presenter = presenter;
     }
 }

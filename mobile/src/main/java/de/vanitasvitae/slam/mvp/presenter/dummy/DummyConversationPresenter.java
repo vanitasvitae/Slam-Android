@@ -27,12 +27,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.vanitasvitae.slam.mvp.contracts.ConversationContract;
+import de.vanitasvitae.slam.xmpp.message.AbstractMessage;
 
 public class DummyConversationPresenter implements ConversationContract.Presenter {
 
     private final ConversationContract.View view;
 
-    private final List<Message> dummyMessages = new ArrayList<>();
+    private final List<AbstractMessage> dummyMessages = new ArrayList<>();
 
     public DummyConversationPresenter(ConversationContract.View view) {
         this.view = view;
@@ -41,6 +42,7 @@ public class DummyConversationPresenter implements ConversationContract.Presente
     }
 
     private void populateDummyMessages() {
+        /*
         try {
             BareJid alice = JidCreate.bareFrom("alice@wonderland.lit");
 
@@ -66,6 +68,7 @@ public class DummyConversationPresenter implements ConversationContract.Presente
         } catch (XmppStringprepException e) {
             e.printStackTrace();
         }
+        */
     }
 
     @Override

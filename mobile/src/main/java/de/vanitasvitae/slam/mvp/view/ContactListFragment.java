@@ -47,13 +47,13 @@ public class ContactListFragment extends Fragment implements ContactListContract
     @BindView(R.id.recycler_list)
     RecyclerView recyclerView;
 
-    private final ContactListContract.Presenter presenter;
+    private ContactListContract.Presenter presenter;
 
     private final List<Contact> contacts = new ArrayList<>();
 
     public ContactListFragment() {
         super();
-        this.presenter = PresenterFactory.getInstance().createContactListPresenter(this);
+        setPresenter(PresenterFactory.getInstance().createContactListPresenter(this));
     }
 
     @Override
@@ -142,4 +142,8 @@ public class ContactListFragment extends Fragment implements ContactListContract
     }
 
 
+    @Override
+    public void setPresenter(ContactListContract.Presenter presenter) {
+        this.presenter = presenter;
+    }
 }

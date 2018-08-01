@@ -17,8 +17,20 @@
  */
 package de.vanitasvitae.slam.xmpp;
 
+import org.jxmpp.jid.BareJid;
+
 /**
  * Created by Paul Schaub on 24.02.18.
  */
 public class Account {
+
+    private final BareJid jid;
+
+    public Account(BareJid jid) {
+        this.jid = jid;
+    }
+
+    public BareJid getJid() {
+        return jid;
+    }
 }

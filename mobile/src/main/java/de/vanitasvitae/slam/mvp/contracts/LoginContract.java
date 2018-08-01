@@ -17,13 +17,15 @@
  */
 package de.vanitasvitae.slam.mvp.contracts;
 
+import de.vanitasvitae.slam.service.SlamXmppService;
+
 /**
  * Model-View-Presenter contract of the login screen.
  * Created by Paul Schaub on 01.02.18.
  */
 public interface LoginContract {
 
-    interface View {
+    interface View extends BaseContract.BaseView<Presenter> {
         void showInvalidJidError();
         void hideInvalidJidError();
         void showInvalidPasswordError();
@@ -33,11 +35,15 @@ public interface LoginContract {
         void showProgressIndicator();
         void hideProgressIndicator();
         void navigateToMainActivity();
+        void disableLoginButton();
+        void enableLoginButton();
     }
 
-    interface Presenter {
+    interface Presenter extends BaseContract.BasePresenter {
         void jidChanged(String jid);
         void passwordChanged(String password);
         void loginClicked();
+        void bindService(SlamXmppService service);
+        void unbindService();
     }
 }
